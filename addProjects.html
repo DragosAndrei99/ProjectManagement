@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\style.css">
+    <title>Add Employee</title>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+            <a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\index.html" class="brand">Project Management
+                App</a>
+            <nav class="nav">
+                <button class="nav__toggle" aria-expanded="false" type="button">
+                    Menu
+                </button>
+                <ul class="nav__wrapper">
+                    <li class="nav__item"><a
+                            href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\employeesTable.html">View
+                            Employees</a>
+                    </li>
+                    <li class="nav__item"><a
+                            href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\projectTable.html">View Projects</a>
+                    </li>
+                    <li class="nav__item"><a
+                            href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\addEmployee.html">Add
+                            New Employee</a></li>
+                    <li class="nav__item"><a
+                            href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\addProjects.html">Add New
+                            Project</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div>
+        <h3>Add New Project:</h3>
+        <table>
+            <form id="form" method="post" action="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\projectTable.html">
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input onkeyup="checkInput(this, document.getElementById('nameSpan'), patternName)"
+                            placeholder="This field can only contain letters" autocomplete="off" type="text" name="name"
+                            id="name">
+                        <span id="nameSpan">*</span></td>
+                </tr>
+                <tr>
+                    <td><label for="startDate">Start date:</label></td>
+                    <td><input onblur="defaultStartDate()" autocomplete="off" type="date" name="startDate"
+                            id="startDate">
+                        <span id="startDateSpan">*</span></td>
+                </tr>
+                <!-- <tr>
+                    <td><label for="timeSinceStart">Time since start:</label></td>
+                    <td><input onkeyup="" autocomplete="off" type="datetime-local" name="timeSinceStart"
+                            id="timeSinceStart">
+                        <span id="timeSinceStartSpan">*</span></td>
+                </tr> -->
+                <tr>
+                    <td><label for="necessaryEmployees">Necessary Employees:</label></td>
+                    <td><input
+                            onkeyup="checkInput(this, document.getElementById('necessaryEmployeesSpan'), patternNumber)"
+                            autocomplete="off" type="number" name="necessaryEmployees" id="necessaryEmployees">
+                        <span id="necessaryEmployeesSpan">*</span></td>
+                </tr>
+                <tr>
+                    <td><label for="employeesAllocated">Employees allocated:</label></td>
+                    <td>
+                        <div class="multipleSelection">
+                            <div class="selectBox" onclick="showCheckboxes()">
+                                <select>
+                                    <option>Select employees</option>
+                                </select>
+                                <div class="overSelect"></div>
+                            </div>
+                            <div id="checkBoxes">
+
+                            </div>
+                           
+                        </div>
+                    </td>
+                </tr>
+        </table>
+        <br>
+        <button disabled id="button" type="submit" onclick="addNewProject()">Add</button>
+        </form>
+
+    </div>
+    <script>
+        var show = true;
+  
+        function showCheckboxes() {
+            var checkboxes = 
+                document.getElementById("checkBoxes");
+  
+            if (show) {
+                checkboxes.style.display = "block";
+                show = false;
+            } else {
+                checkboxes.style.display = "none";
+                show = true;
+            }
+        }
+    </script>
+    <script src="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\js\addProjects.js"></script>
+    <script>
+        // solves an error which will cause the addEmployee form to remain completed if accesed again
+        // when it was  previously accesed from the edit button and the it was not submitted
+        window.onbeforeunload = function () {
+            localStorage.removeItem('projectsToBeEdited');
+        };
+    </script>
+    
+
+
+</body>
+
+</html>
