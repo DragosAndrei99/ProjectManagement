@@ -7,8 +7,6 @@ if (JSON.parse(localStorage.getItem('projectsToBeEdited'))) {
     document.getElementById('name').value = JSON.parse(localStorage.getItem('projectsToBeEdited')).name;
     document.getElementById('startDate').value = JSON.parse(localStorage.getItem('projectsToBeEdited')).startDate;
     document.getElementById('necessaryEmployees').value = JSON.parse(localStorage.getItem('projectsToBeEdited')).necessaryEmployees;
-    //an error is making this below to not be an array when I try to connect with employees
-
     JSON.parse(localStorage.getItem('projectsToBeEdited')).employeesAllocated.forEach(employee => {
         employee === document.getElementById(employee).id ? document.getElementById(employee).checked = true : document.getElementById(employee).checked = false
     })
@@ -86,26 +84,30 @@ function employeesAllocated() {
 
 function addNewProject() {
     let employeesToBeAdded = [];
+    let employeesToBeDeleted = [];
 
     document.querySelectorAll('.employeesToBeAdded').forEach(employee => {
-        employee.checked ? employeesToBeAdded.push(employee.id) : null
+        employee.checked ? employeesToBeAdded.push(employee.id) : employeesToBeDeleted.push(employee.id)
     })
 
     function connectProjectsToEmployees(){
-        let keys = Object.keys(localStorage);
-      
-        keys.forEach(key =>{
-          if (key.startsWith('Employee') && `Employee ${JSON.parse(localStorage.getItem(key)).name}`.includes(key)){
-            let employeeToBechanged = JSON.parse(localStorage.getItem(key));
-            if (employeeToBechanged.project === '') {
-                employeeToBechanged.project = `${employeeToBechanged.name}, Project ${newProject.name}`;
-              } else {
-                employeeToBechanged.project = `Project ${newProject.name}`;
-              }
-            localStorage.setItem(key, JSON.stringify(employeeToBechanged));
-            
+        employeesToBeAdded.forEach(employee => {
+            let employeeToBeModified = JSON.parse(localStorage.getItem(employee));
+            if (employeeToBeModified.project.includes(`Project ${newProject.name}`) === false) {
+                employeeToBeModified.project.push(`Project ${newProject.name}`); 
+                localStorage.setItem(employee, JSON.stringify(employeeToBeModified));
           }
-        })
+          });
+
+          employeesToBeDeleted.forEach(employee => {
+            let employeeToBeDeleted = JSON.parse(localStorage.getItem(employee));
+            if (employeeToBeDeleted.project.includes(`Project ${newProject.name}`)) {
+              let index = employeeToBeDeleted.project.indexOf(`Project ${newProject.name}`);
+              employeeToBeDeleted.project.splice(index, 1);
+              localStorage.setItem(employee, JSON.stringify(employeeToBeDeleted));
+            }
+          });
+      
       
       }
     let newProject = {
@@ -121,13 +123,13 @@ function addNewProject() {
     if (projectsToBeEdited) {
         localStorage.removeItem(`Project ${projectsToBeEdited.name}`);
         localStorage.setItem(`Project ${newProject.name}`, stringifiedProject);
-        // connectProjectsToEmployees();
+        connectProjectsToEmployees();
     } else {
         let keys = Object.keys(localStorage);
         if (keys.includes(`Project ${newProject.name}`)){
             alert("Cannot have two different projects with the same name")
         } else {
-            // connectProjectsToEmployees();
+            connectProjectsToEmployees();
             localStorage.setItem(`Project ${newProject.name}`, stringifiedProject);
         }
     }

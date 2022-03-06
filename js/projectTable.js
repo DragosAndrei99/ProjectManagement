@@ -191,6 +191,24 @@ function sortTable(sort, reverseSort) {
 }
 
 function deleteProject(element){
+
+  let array = [];
+  let keys = Object.keys(localStorage);
+  keys.forEach(key =>{
+    key.startsWith(`Employee`) ? array.push(key) : null
+  })
+
+  array.forEach(e =>{
+    if(JSON.parse(localStorage.getItem(e)).project.includes(`Project ${element.value}`)){
+      let employeeToHaveProjectDeleted = JSON.parse(localStorage.getItem(e));
+      let index = employeeToHaveProjectDeleted.project.indexOf(`Project ${element.value}`);
+      employeeToHaveProjectDeleted.project.splice(index, 1);
+      localStorage.setItem(`Employee ${employeeToHaveProjectDeleted.name}`, JSON.stringify(employeeToHaveProjectDeleted))
+
+    }
+
+  })
+
   localStorage.removeItem(`Project ${element.value}`);
   location.reload();
 }
@@ -203,7 +221,3 @@ function editProject(element){
 }
 
 showTable();
-
-//make a separate employee profile-like page with PTOs
-//assign employees to projects by changing the form for adding the employee - choose from the existing projects
-//make a project page where you can see details , employees etc

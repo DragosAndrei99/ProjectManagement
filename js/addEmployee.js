@@ -14,14 +14,12 @@ if (JSON.parse(localStorage.getItem('employeeToBeEdited'))) {
   document.getElementById('phoneNumber').value = JSON.parse(localStorage.getItem('employeeToBeEdited')).phoneNumber;
   document.getElementById('email').value = JSON.parse(localStorage.getItem('employeeToBeEdited')).email;
 
-      JSON.parse(localStorage.getItem('employeeToBeEdited')).project.forEach(project => {
-        project === document.getElementById(project).id ? document.getElementById(project).checked = true : document.getElementById(project).checked = false
-    })
-
-    
+  JSON.parse(localStorage.getItem('employeeToBeEdited')).project.forEach(project => {
+    project === document.getElementById(project).id ? document.getElementById(project).checked = true : document.getElementById(project).checked = false
+  })
 
   const spans = document.querySelectorAll('span');
-  spans.forEach(span =>{
+  spans.forEach(span => {
     span.innerText = '✓';
     span.style.color = 'green';
   })
@@ -51,11 +49,11 @@ function projects() {
   let keys = Object.keys(localStorage);
 
   keys.forEach(key => {
-      key.startsWith('Project') ? projectsArr.push(key) : null
+    key.startsWith('Project') ? projectsArr.push(key) : null
   })
   projectsArr?.forEach(project => {
-      let select = document.getElementById('checkBoxes')
-      select.innerHTML += `<label for="${project}">
+    let select = document.getElementById('checkBoxes')
+    select.innerHTML += `<label for="${project}">
       <input name="checkbox" class="projectsToBeAdded" type="checkbox" id="${project}" />
       ${project}</label>`
   })
@@ -103,10 +101,10 @@ function matchAgeInputs() {
 }
 
 function matchAgeInputs2() {
-  if (document.getElementById('dateOfBirth').value){
-  document.getElementById('age').value = new Date().getFullYear() - document.getElementById('dateOfBirth').value.slice(0, 4);
-  document.getElementById('dateOfBirthSpan').innerText = '✓';
-  document.getElementById('dateOfBirthSpan').style.color = 'green';
+  if (document.getElementById('dateOfBirth').value) {
+    document.getElementById('age').value = new Date().getFullYear() - document.getElementById('dateOfBirth').value.slice(0, 4);
+    document.getElementById('dateOfBirthSpan').innerText = '✓';
+    document.getElementById('dateOfBirthSpan').style.color = 'green';
   } else {
     document.getElementById('age').value = '';
   }
@@ -124,33 +122,33 @@ function defaultEmploymentDate() {
 function addNewEmployee() {
 
   let projectsToBeAdded = [];
+  let projectsToBeDeleted = [];
 
 
   document.querySelectorAll('.projectsToBeAdded').forEach(project => {
-    project.checked ? projectsToBeAdded.push(project.id) : null
-})
-
-
-function connectEmployeesToProjects(){
-  let keys = Object.keys(localStorage);
-
-  keys.forEach(key =>{
-    console.log(key);
-    console.log(JSON.parse(localStorage.getItem(key)).name);
-    if (key.startsWith('Project') && `Project ${JSON.parse(localStorage.getItem(key)).name}`.includes(key)){
-      let projectToBechanged = JSON.parse(localStorage.getItem(key));
-      if (projectToBechanged.employeesAllocated === '') {
-        projectToBechanged.employeesAllocated = `${projectToBechanged.employeesAllocated}, Employee ${newEmployee.name}`;
-      } else {
-        projectToBechanged.employeesAllocated = `Employee ${newEmployee.name}`;
-      }
-      
-      localStorage.setItem(key, JSON.stringify(projectToBechanged));
-      
-    }
+    project.checked ? projectsToBeAdded.push(project.id) : projectsToBeDeleted.push(project.id)
   })
 
-}
+
+  function connectEmployeesToProjects() {
+
+    projectsToBeAdded.forEach(project => {
+      let projectToBeModified = JSON.parse(localStorage.getItem(project));
+      if (projectToBeModified.employeesAllocated.includes(`Employee ${newEmployee.name}`) === false) {
+        projectToBeModified.employeesAllocated.push(`Employee ${newEmployee.name}`); 
+        localStorage.setItem(project, JSON.stringify(projectToBeModified));
+    }
+    });
+
+    projectsToBeDeleted.forEach(project => {
+      let projectToBeDeleted = JSON.parse(localStorage.getItem(project));
+      if (projectToBeDeleted.employeesAllocated.includes(`Employee ${newEmployee.name}`)) {
+        let index = projectToBeDeleted.employeesAllocated.indexOf(`Employee ${newEmployee.name}`);
+        projectToBeDeleted.employeesAllocated.splice(index, 1);
+        localStorage.setItem(project, JSON.stringify(projectToBeDeleted));
+      }
+    });
+  }
 
   let newEmployee = {
 
@@ -167,36 +165,18 @@ function connectEmployeesToProjects(){
   if (employeeToBeEdited) {
     localStorage.removeItem(`Employee ${employeeToBeEdited.name}`);
     localStorage.setItem(`Employee ${newEmployee.name}`, stringifiedEmployee);
-    // connectEmployeesToProjects();
+    connectEmployeesToProjects();
   } else {
     let keys = Object.keys(localStorage);
-    if (keys.includes(`Employee ${newEmployee.name}`)){
+    if (keys.includes(`Employee ${newEmployee.name}`)) {
       alert("Cannot have two different projects with the same name")
-  } else {
-    // connectEmployeesToProjects();
+    } else {
+      connectEmployeesToProjects();
 
-    localStorage.setItem(`Employee ${newEmployee.name}`, stringifiedEmployee);
-  }
-    
+      localStorage.setItem(`Employee ${newEmployee.name}`, stringifiedEmployee);
+    }
+
 
   }
   localStorage.removeItem('employeeToBeEdited');
 }
-
-// const projects2 = document.querySelectorAll("input[name=checkbox]");
-
-// projects2.forEach(project =>{
-//   const array = [];
-//   project.addEventListener('change', function(){
-//     if (this.checked) {
-//       console.log(JSON.parse(localStorage.getItem(project.id)).employeesAllocated)
-//     } else {
-//       console.log('this is unchecked');
-//       array.push(JSON.parse(localStorage.getItem(project.id)).employeesAllocated)
-//       array.forEach(employee =>{
-//         employee === document.getElementById('name').value ? localStorage.setItem(project.id, JSON.stringify(JSON.parse(localStorage.getItem(project.id)))) : null
-//       })
-
-//     }
-//   })
-// })

@@ -196,10 +196,25 @@ function sortTable(sort, reverseSort) {
 }
 
 function deleteEmployee(element){
-  //make delete function also delete the employee names from the projects they are allocated
-  localStorage.removeItem(`Employee ${element.value}`);
+  let array = [];
+  let keys = Object.keys(localStorage);
+  keys.forEach(key =>{
+    key.startsWith(`Project`) ? array.push(key) : null
+  })
 
+  array.forEach(e =>{
+    if(JSON.parse(localStorage.getItem(e)).employeesAllocated.includes(`Employee ${element.value}`)){
+      let projectToHaveEmployeeDeleted = JSON.parse(localStorage.getItem(e));
+      let index = projectToHaveEmployeeDeleted.employeesAllocated.indexOf(`Employee ${element.value}`);
+      projectToHaveEmployeeDeleted.employeesAllocated.splice(index, 1);
+      localStorage.setItem(`Project ${projectToHaveEmployeeDeleted.name}`, JSON.stringify(projectToHaveEmployeeDeleted))
+
+    }
+
+  })
+  localStorage.removeItem(`Employee ${element.value}`);
   location.reload();
+
 }
 
 function editEmployee(element){
@@ -209,28 +224,7 @@ function editEmployee(element){
 
 }
 
-function connectEmployeesToProjects(){
-  let keys = Object.keys(localStorage);
-  keys.forEach(key =>{
-    if (key === element) {
-      
-    }
-  })
-  keys.forEach(key =>{
-    if (key.startsWith('Project') && projectsToBeDeleted.includes(key)){
-      let projectsToBeDeleted = JSON.parse(localStorage.getItem(key));
-      projectsToBeDeleted.employeesAllocated = `${projectsToBeDeleted.employeesAllocated}, ${newEmployee.name}`;
-      localStorage.setItem(key, JSON.stringify(projectsToBeDeleted));
-      
-    }
-  })
-
-}
-
 showTable();
 
 //make a separate employee profile-like page with PTOs
-//assign employees to projects by changing the form for adding the employee - choose from the existing projects
 //make a project page where you can see details , employees etc
-
-// how to create relationships between projects and employees
