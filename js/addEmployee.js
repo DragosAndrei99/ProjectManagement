@@ -25,6 +25,8 @@ if (JSON.parse(localStorage.getItem('employeeToBeEdited'))) {
   })
   document.getElementById('button').disabled = false;
 
+  
+
 } else {
   document.addEventListener('onload', defaultEmploymentDate());
 }

@@ -114,6 +114,7 @@ function addNewProject() {
 
         name: capitalizeString(document.getElementById('name').value),
         startDate: document.getElementById('startDate').value,
+        timeSinceStart: ((Date.parse(new Date()) - Date.parse(document.getElementById('startDate').value)) /(1000*60*60*24)).toFixed(0) - 1,
         necessaryEmployees: document.getElementById('necessaryEmployees').value,
         employeesAllocated: employeesToBeAdded,
 

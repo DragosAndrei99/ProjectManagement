@@ -7,7 +7,7 @@ let projectDetails = '';
 const tableHeadProjects = `<tr>
 <th><button id="sortName" onclick="sortTable(compareName, reverseCompareName)">↨</button>Project name</th>
 <th><button id="sortStartDate" onclick="sortTable(compareStartDate, reverseCompareStartDate)">↨</button>Start date</th>
-<th><button id="sortTime" onclick="sortTable(compareTimeSinceStart, reverseCompareTimeSinceStart)">↨</button>Time since start</th>
+<th><button id="sortTime" onclick="sortTable(compareTimeSinceStart, reverseCompareTimeSinceStart)">↨</button>Days since start</th>
 <th><button id="sortNecessaryEmployees" onclick="sortTable(compareNecessaryEmployees, reverseCompareNecessaryEmployees)">↨</button>Necessary employees</th>
 <th><button id="sortEmployeesAllocated" onclick="sortTable(compareEmployeesAllocated, reverseCompareEmployeesAllocated)">↨</button>Employees allocated</th>
 </tr>
@@ -219,5 +219,4 @@ function editProject(element){
   window.location.href = 'addProjects.html';
 
 }
-
 showTable();
