@@ -24,92 +24,113 @@
                             href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\employeesTable.html">View
                             Employees</a>
                     </li>
-                    <li class="nav__item"><a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\projectTable.html">View Projects</a></li>
+                    <li class="nav__item"><a
+                            href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\projectTable.html">View Projects</a>
+                    </li>
                     <li class="nav__item"><a
                             href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\addEmployee.html">Add
                             New Employee</a></li>
-                    <li class="nav__item"><a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\addProjects.html">Add New Project</a></li>
+                    <li class="nav__item"><a
+                            href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\addProjects.html">Add New
+                            Project</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <div style="display: flex; align-items: center; justify-content: space-around  ;">
+        <div class="addDiv divs">
+            <h3 id="subtitle">Add New Employee:</h3>
+            <table>
+                <form method="post" action="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\employeesTable.html">
+                    <tr>
+                        <td><label for="name">Name:</label></td>
+                        <td><input onkeyup="checkInput(this, document.getElementById('nameSpan'), patternName)"
+                                placeholder="This field can only contain letters" autocomplete="off" type="text"
+                                name="name" id="name">
+                            <span class="spans" id="nameSpan">*</span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="age">Age:</label></td>
+                        <td><input onblur="matchAgeInputs()" autocomplete="off" min="18" max="100" type="number"
+                                name="age" id="age" placeholder="18-100">
+                            <span class="spans" id="ageSpan">*</span></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="project">Projects:</label></td>
+                        <td>
+                            <div class="multipleSelection">
+                                <div class="selectBox" onclick="showCheckboxes()">
+                                    <select>
+                                        <option>Select projects</option>
+                                    </select>
+                                    <div class="overSelect"></div>
+                                </div>
+                                <div id="checkBoxes">
 
-    <div>
-        <h3>Add New Employee:</h3>
-        <table>
-            <form method="post" action="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\employeesTable.html">
-                <tr>
-                    <td><label for="name">Name:</label></td>
-                    <td><input onkeyup="checkInput(this, document.getElementById('nameSpan'), patternName)"
-                            placeholder="This field can only contain letters" autocomplete="off" type="text" name="name"
-                            id="name">
-                        <span id="nameSpan">*</span></td>
-                </tr>
-                <tr>
-                    <td><label for="age">Age:</label></td>
-                    <td><input onblur="matchAgeInputs()" autocomplete="off" min="18" max="100" type="number" name="age"
-                            id="age" placeholder="18-100">
-                        <span id="ageSpan">*</span></td>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="project">Projects:</label></td>
-                    <td>
-                        <div class="multipleSelection">
-                            <div class="selectBox" onclick="showCheckboxes()">
-                                <select>
-                                    <option>Select projects</option>
-                                </select>
-                                <div class="overSelect"></div>
+                                </div>
+
                             </div>
-                            <div id="checkBoxes">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="dateOfBirth">Date of Birth:</label></td>
+                        <td><input onblur="matchAgeInputs2()" autocomplete="off" type="date" name="dateOfBirth"
+                                id="dateOfBirth"><span class="spans" id="dateOfBirthSpan">*</span></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="dateOfEmployment">Date of Employment:</label></td>
+                        <td> <input onblur="defaultEmploymentDate()" autocomplete="off" type="date"
+                                name="dateOfEmployment" id="dateOfEmployment"><span class="spans"
+                                id="dateOfEmploymentSpan">*</span></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="phoneNumber">Phone Number:</label></td>
+                        <td><input placeholder="07XXXXXXXX"
+                                onkeyup="checkInput(this, document.getElementById('phoneNumberSpan'), patternPhoneNumber)"
+                                autocomplete="off" type="text" name="phoneNumber" id="phoneNumber"><span class="spans"
+                                id="phoneNumberSpan">*</span></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">E-mail address:</label></td>
+                        <td><input placeholder="abc@abc.com"
+                                onkeyup="checkInput(this, document.getElementById('emailSpan'), patternEmail)"
+                                autocomplete="off" type="text" name="email" id="email"><span class="spans"
+                                id="emailSpan">*</span></td>
+                        </td>
+                    </tr>
+            </table>
+            <br>
+            <button class="myButton" disabled id="button" type="submit" onclick="addNewEmployee()">Add</button>
+            </form>
 
-                            </div>
-                           
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="dateOfBirth">DateOfBirth:</label></td>
-                    <td><input onblur="matchAgeInputs2()" autocomplete="off" type="date" name="dateOfBirth"
-                            id="dateOfBirth"><span id="dateOfBirthSpan">*</span></td>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="dateOfEmployment">dateOfEmployment:</label></td>
-                    <td> <input onblur="defaultEmploymentDate()" autocomplete="off" type="date" name="dateOfEmployment"
-                            id="dateOfEmployment"><span id="dateOfEmploymentSpan">*</span></td>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="phoneNumber">Phone Number:</label></td>
-                    <td><input placeholder="07XXXXXXXX"
-                            onkeyup="checkInput(this, document.getElementById('phoneNumberSpan'), patternPhoneNumber)"
-                            autocomplete="off" type="text" name="phoneNumber" id="phoneNumber"><span
-                            id="phoneNumberSpan">*</span></td>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="email">E-mail address:</label></td>
-                    <td><input placeholder="abc@abc.com"
-                            onkeyup="checkInput(this, document.getElementById('emailSpan'), patternEmail)"
-                            autocomplete="off" type="text" name="email" id="email"><span id="emailSpan">*</span></td>
-                    </td>
-                </tr>
-        </table>
-        <br>
-        <button disabled id="button" type="submit" onclick="addNewEmployee()">Add</button>
-        </form>
+        </div>
+        <div id="ptoDiv" class="ptoDiv divs">
+            <h3>PTO days:</h3>
+            <div class="ptoSpan">Start</div><input id="startPto" type="date" />
+            <div class="ptoSpan">End</div><input id="endPto" type="date" />
+            <br>
+            <button class="myButton" onclick="setPto()" type="button">Set</button>
+            <br>
+            <ul id="showPto">
 
+            </ul>
+            <div id="ptoDays">
+                <h4>PTO days:</h4>
+            </div>
+        </div>
     </div>
     <script>
         var show = true;
-  
+
         function showCheckboxes() {
-            var checkboxes = 
+            var checkboxes =
                 document.getElementById("checkBoxes");
-  
+
             if (show) {
                 checkboxes.style.display = "block";
                 show = false;

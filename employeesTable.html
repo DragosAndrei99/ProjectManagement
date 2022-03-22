@@ -1,48 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\style.css">
-    <title>Project Management</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\style.css">
+  <title>Project Management</title>
 </head>
+
 <body>
-    <header class="site-header">
-        <div class="wrapper site-header__wrapper">
-          <a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\index.html" class="brand">Project Management App</a>
-          <nav class="nav">
-            <button class="nav__toggle" aria-expanded="false" type="button">
-              Menu
-            </button>
-            <ul class="nav__wrapper">
-              <li class="nav__item"><a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\employeesTable.html">View Employees</a></li>
-              <li class="nav__item"><a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\projectTable.html">View Projects</a></li>
-              <li class="nav__item"><a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\addEmployee.html">Add New Employee</a></li>
-              <li class="nav__item"><a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\addProjects.html">Add New Project</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-    <div>
-      <h3>Employees:</h3>
-        <table id="table">
-            <tr>
-                <th><button id="sortName" onclick="sortTable(compareAlpha, reverseCompareAlpha)">↨</button>Name</th>
-                <th><button id="sortAge" onclick="sortTable(compareNum, reverseCompareNum)">↨</button>Age</th>
-                <th><button id="sortProject" onclick="sortTable(compareAlpha, reverseCompareAlpha)">↨</button>Project</th>
-                <th><button id="sortDateOfBirth" onclick="sortTable(compareDate, reverseCompareDate)">↨</button>Date of Birth</th>
-                <th><button id="sortDateOfEmployment" onclick="sortTable(compareDateOfEmployment, reverseCompareDateOfEmployment)">↨</button>Date of Employment</th>
-                <th>Phone Number</th>
-                <th><button id="sortEmail" onclick="sortTable(compareEmail, reverseCompareEmail)">↨</button>E-mail</th>
-            </tr>
-            <tr>
-
-            </tr>
-        </table>
+  <header class="site-header">
+    <div class="wrapper site-header__wrapper">
+      <a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\index.html" class="brand">Project Management App</a>
+      <nav class="nav">
+        <button class="nav__toggle" aria-expanded="false" type="button">
+          Menu
+        </button>
+        <ul class="nav__wrapper">
+          <li class="nav__item"><a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\employeesTable.html">View
+              Employees</a></li>
+          <li class="nav__item"><a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\projectTable.html">View
+              Projects</a></li>
+          <li class="nav__item"><a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\addEmployee.html">Add New
+              Employee</a></li>
+          <li class="nav__item"><a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\addProjects.html">Add New
+              Project</a></li>
+        </ul>
+      </nav>
     </div>
-    <footer></footer>
-    <script src="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\js\employeeTable.js"></script>
-</body>
-</html>
+  </header>
 
+  <div style="display: flex; align-items: center; justify-content: space-around  ;">
+    <div class="divs addDiv " style="font-size: 15px">
+      <h3>Employees:</h3>
+      <table id="table">
+        <tr>
+          <th><button id="sortName" onclick="sortTable(compareAlpha, reverseCompareAlpha)">↨</button>Name</th>
+          <th><button id="sortAge" onclick="sortTable(compareNum, reverseCompareNum)">↨</button>Age</th>
+          <th><button id="sortProject" onclick="sortTable(compareAlpha, reverseCompareAlpha)">↨</button>Project</th>
+          <th><button id="sortDateOfBirth" onclick="sortTable(compareDate, reverseCompareDate)">↨</button>Date of Birth
+          </th>
+          <th><button id="sortDateOfEmployment"
+              onclick="sortTable(compareDateOfEmployment, reverseCompareDateOfEmployment)">↨</button>Date of Employment
+          </th>
+          <th>Phone Number</th>
+          <th><button id="sortEmail" onclick="sortTable(compareEmail, reverseCompareEmail)">↨</button>E-mail</th>
+        </tr>
+        <tr>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+  <footer></footer>
+  <script src="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\js\employeeTable.js"></script>
+</body>
+
+</html>

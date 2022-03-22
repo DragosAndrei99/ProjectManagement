@@ -36,8 +36,8 @@ function generateTable() {
     <td>${element.timeSinceStart}</td>
     <td>${element.necessaryEmployees}</td>
     <td>${element.employeesAllocated}</td>
-    <td><button onclick="editProject(this)" class="editButtons" value="${element.name}">Edit</button></td> 
-    <td><button onclick="deleteProject(this)" id="delete" value="${element.name}">Delete</button></td></tr>`
+    <td><button onclick="editProject(this)" class="myButton editButtons" value="${element.name}">Edit</button></td> 
+    <td><button  class="myButton"  onclick="deleteProject(this)" id="delete" value="${element.name}">Delete</button></td></tr>`
   });
 }
 

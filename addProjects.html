@@ -37,61 +37,64 @@
             </nav>
         </div>
     </header>
+    <div style="display: flex; align-items: center; justify-content: space-around  ;">
+        <div class="divs addDiv">
+            <h3>Add New Project:</h3>
 
-    <div>
-        <h3>Add New Project:</h3>
-        <table>
-            <form id="form" method="post" action="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\projectTable.html">
-                <tr>
-                    <td><label for="name">Name:</label></td>
-                    <td><input onkeyup="checkInput(this, document.getElementById('nameSpan'), patternName)"
-                            placeholder="This field can only contain letters" autocomplete="off" type="text" name="name"
-                            id="name">
-                        <span id="nameSpan">*</span></td>
-                </tr>
-                <tr>
-                    <td><label for="startDate">Start date:</label></td>
-                    <td><input onblur="defaultStartDate()" autocomplete="off" type="date" name="startDate"
-                            id="startDate">
-                        <span id="startDateSpan">*</span></td>
-                </tr>
-                <tr>
-                    <td><label for="necessaryEmployees">Necessary Employees:</label></td>
-                    <td><input
-                            onkeyup="checkInput(this, document.getElementById('necessaryEmployeesSpan'), patternNumber)"
-                            autocomplete="off" type="number" name="necessaryEmployees" id="necessaryEmployees">
-                        <span id="necessaryEmployeesSpan">*</span></td>
-                </tr>
-                <tr>
-                    <td><label for="employeesAllocated">Employees allocated:</label></td>
-                    <td>
-                        <div class="multipleSelection">
-                            <div class="selectBox" onclick="showCheckboxes()">
-                                <select>
-                                    <option>Select employees</option>
-                                </select>
-                                <div class="overSelect"></div>
+            <table>
+                <form id="form" method="post"
+                    action="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\projectTable.html">
+                    <tr>
+                        <td><label for="name">Name:</label></td>
+                        <td><input onkeyup="checkInput(this, document.getElementById('nameSpan'), patternName)"
+                                placeholder="This field can only contain letters" autocomplete="off" type="text"
+                                name="name" id="name">
+                            <span id="nameSpan">*</span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="startDate">Start date:</label></td>
+                        <td><input onblur="defaultStartDate()" autocomplete="off" type="date" name="startDate"
+                                id="startDate">
+                            <span id="startDateSpan">*</span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="necessaryEmployees">Necessary Employees:</label></td>
+                        <td><input
+                                onkeyup="checkInput(this, document.getElementById('necessaryEmployeesSpan'), patternNumber)"
+                                autocomplete="off" type="number" name="necessaryEmployees" id="necessaryEmployees">
+                            <span id="necessaryEmployeesSpan">*</span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="employeesAllocated">Employees allocated:</label></td>
+                        <td>
+                            <div class="multipleSelection">
+                                <div class="selectBox" onclick="showCheckboxes()">
+                                    <select>
+                                        <option>Select employees</option>
+                                    </select>
+                                    <div class="overSelect"></div>
+                                </div>
+                                <div id="checkBoxes">
+
+                                </div>
+
                             </div>
-                            <div id="checkBoxes">
+                        </td>
+                    </tr>
+            </table>
+            <br>
+            <button class="myButton" disabled id="button" type="submit" onclick="addNewProject()">Add</button>
+            </form>
 
-                            </div>
-                           
-                        </div>
-                    </td>
-                </tr>
-        </table>
-        <br>
-        <button disabled id="button" type="submit" onclick="addNewProject()">Add</button>
-        </form>
-
+        </div>
     </div>
     <script>
         var show = true;
-  
+
         function showCheckboxes() {
-            var checkboxes = 
+            var checkboxes =
                 document.getElementById("checkBoxes");
-  
+
             if (show) {
                 checkboxes.style.display = "block";
                 show = false;
@@ -109,7 +112,7 @@
             localStorage.removeItem('projectsToBeEdited');
         };
     </script>
-    
+
 
 
 </body>
