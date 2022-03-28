@@ -5,37 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Add Employee</title>
 </head>
 
 <body>
 
-    <header class="site-header">
-        <div class="wrapper site-header__wrapper">
-            <a href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\index.html" class="brand">Project Management
-                App</a>
-            <nav class="nav">
-                <button class="nav__toggle" aria-expanded="false" type="button">
-                    Menu
-                </button>
-                <ul class="nav__wrapper">
-                    <li class="nav__item"><a
-                            href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\employeesTable.html">View
-                            Employees</a>
-                    </li>
-                    <li class="nav__item"><a
-                            href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\projectTable.html">View Projects</a>
-                    </li>
-                    <li class="nav__item"><a
-                            href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\addEmployee.html">Add
-                            New Employee</a></li>
-                    <li class="nav__item"><a
-                            href="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\addProjects.html">Add New
-                            Project</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header id="header" class="site-header">
     </header>
     <div style="display: flex; align-items: center; justify-content: space-around  ;">
         <div class="divs addDiv">
@@ -43,7 +19,7 @@
 
             <table>
                 <form id="form" method="post"
-                    action="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\projectTable.html">
+                    action="projectTable.html">
                     <tr>
                         <td><label for="name">Name:</label></td>
                         <td><input onkeyup="checkInput(this, document.getElementById('nameSpan'), patternName)"
@@ -60,7 +36,7 @@
                     <tr>
                         <td><label for="necessaryEmployees">Necessary Employees:</label></td>
                         <td><input
-                                onkeyup="checkInput(this, document.getElementById('necessaryEmployeesSpan'), patternNumber)"
+                                onblur="checkInput(this, document.getElementById('necessaryEmployeesSpan'), patternNumber)"
                                 autocomplete="off" type="number" name="necessaryEmployees" id="necessaryEmployees">
                             <span id="necessaryEmployeesSpan">*</span></td>
                     </tr>
@@ -88,33 +64,39 @@
 
         </div>
     </div>
-    <script>
-        var show = true;
 
-        function showCheckboxes() {
-            var checkboxes =
-                document.getElementById("checkBoxes");
-
-            if (show) {
-                checkboxes.style.display = "block";
-                show = false;
-            } else {
-                checkboxes.style.display = "none";
-                show = true;
-            }
-        }
-    </script>
-    <script src="C:\Users\Dragos\Desktop\web-dev\ProjectManagement\js\addProjects.js"></script>
-    <script>
-        // solves an error which will cause the addEmployee form to remain completed if accesed again
-        // when it was  previously accesed from the edit button and the it was not submitted
-        window.onbeforeunload = function () {
-            localStorage.removeItem('projectsToBeEdited');
-        };
-    </script>
-
-
+    <footer id="footer"></footer>
 
 </body>
+
+<script>
+    var show = true;
+
+    function showCheckboxes() {
+        var checkboxes =
+            document.getElementById("checkBoxes");
+
+        if (show) {
+            checkboxes.style.display = "block";
+            show = false;
+        } else {
+            checkboxes.style.display = "none";
+            show = true;
+        }
+    }
+</script>
+<script src="js\headAndFoot.js"></script>
+<script src="js\addProjects.js"></script>
+<script>
+    // solves an error which will cause the addEmployee form to remain completed if accesed again
+    // when it was  previously accesed from the edit button and the it was not submitted
+    window.onbeforeunload = function () {
+        localStorage.removeItem('projectsToBeEdited');
+    };
+</script>
+
+
+
+
 
 </html>

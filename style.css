@@ -1,8 +1,23 @@
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background-image: url("images/HEw4M7.jpeg");
   font-size: 20px;
   font-family: 'Helvetica', 'Sans Serif';
+  animation: animate 0.5s;
 }
+@keyframes animate{
+  from{
+    transform: rotateX(90deg);
+  } to {
+    transform: rotateX(0deg);
+
+  }
+} 
+
+
+
 
 table,
 th,
@@ -13,11 +28,6 @@ td {
 
 
 /* -----------NAVBAR STYLING ------------- */
-.brand {
-  font-weight: bold;
-  font-size: 25px;
-  color: black
-}
 
 .site-header {
   position: relative;
@@ -52,7 +62,6 @@ td {
     top: 100%;
     right: 0;
     left: 0;
-    background-color: #d9f0f7;
     visibility: hidden;
     opacity: 0;
     transform: translateY(-100%);
@@ -67,9 +76,11 @@ td {
 }
 
 .nav__item a {
+  background-color: #add8e6;
+  margin-top:5px;
   color: black;
   display: block;
-  padding: 1rem 0.8rem;
+  padding: 4%;
   font-weight: bold;
   font-size: 15px;
   -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
@@ -81,6 +92,30 @@ td {
 
 .nav__toggle {
   display: none;
+}
+
+.container {
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
 }
 
 @media (max-width: 599px) {
@@ -102,7 +137,7 @@ li {
 
 input {
   margin: 5px;
-  width: 400px;
+  width: auto;
 }
 
 .spans {
@@ -116,8 +151,9 @@ input {
 
 
 .multipleSelection {
-  width: 300px;
-  background-color: #def7ff;
+  padding: 10px 20px 10px 9px;
+  width: auto;
+  background-color: #add8e6;
 }
 
 .selectBox {
@@ -125,8 +161,19 @@ input {
 }
 
 .selectBox select {
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(252,252,252,1);
+  -webkit-box-shadow: 2px 2px 6px 0 #33bdef ;
+  box-shadow: 2px 2px 6px 0 #33bdef ;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.66) ; 
+  border: 2px solid #c4c2c2;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  color: rgba(0,142,198,1);
   width: 100%;
   font-weight: bold;
+  height: 40px;
 }
 
 .overSelect {
@@ -150,15 +197,19 @@ input {
   background-color: #ffffff;
 }
 
+.employeesToBeAdded {
+  width:auto;
+}
+.projectsToBeAdded{
+  width: auto;
+}
+
 /* ------------------------ */
 
 
 .ptoDiv {
   border: 1px solid black;
-  width: auto;
-  height: 500px;
   background-color: #ccdeedbd;
-  ;
   text-align: center;
 }
 
@@ -169,12 +220,9 @@ input {
 
 .addDiv {
   border: 1px solid black;
-  width: auto;
-  height: 500px;
   background-color: #ccdeedbd;
-  ;
   text-align: center;
-
+  padding: 1%;  
 }
 
 .divs {
@@ -184,16 +232,17 @@ input {
   border-radius: 8px;
 }
 
+
+
+
 .myButton {
   box-shadow: 0px 1px 0px 0px #f0f7fa;
   background: linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
   background-color: #33bdef;
   border-radius: 6px;
   border: 1px solid black;
-  display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: Arial;
   font-size: 15px;
   font-weight: bold;
   padding: 6px 24px;
@@ -208,5 +257,48 @@ input {
 
 .myButton:active {
   position: relative;
-  top: 1px;
+  top: 1px; 
+}
+
+input {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 10px 20px;
+  border: 2px solid #c4c2c2;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  color: rgba(0,142,198,1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(252,252,252,1);
+  -webkit-box-shadow: 2px 2px 6px 0 #33bdef ;
+  box-shadow: 2px 2px 6px 0 #33bdef ;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.66) ;
+}
+
+/* -------------footer */
+#footer{
+  margin-top:auto;
+  background-color:#add8e6 ;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.footerDiv{
+  padding: 0.5% 0.5%;
+  font-size:smaller;
+  color: grey;
+}
+
+.social-icons{
+  width: 2%;
+}
+
+.hyperlinks{
+  padding-left: 4%;
+  padding-right: 4%;
+  font-size:smaller;
+  color: grey;
 }

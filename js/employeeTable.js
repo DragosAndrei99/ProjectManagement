@@ -14,19 +14,6 @@ const tableHead = `<tr>
 <th><button id="sortEmail" onclick="sortTable(compareEmail, reverseCompareEmail)">↨</button>E-mail</th>
 </tr>`;
 
-let navToggle = document.querySelector(".nav__toggle");
-let navWrapper = document.querySelector(".nav__wrapper");
-navToggle.addEventListener("click", function () {
-  if (navWrapper.classList.contains("active")) {
-    this.setAttribute("aria-expanded", "false");
-    this.setAttribute("aria-label", "menu");
-    navWrapper.classList.remove("active");
-  } else {
-    navWrapper.classList.add("active");
-    this.setAttribute("aria-label", "close menu");
-    this.setAttribute("aria-expanded", "true");
-  }
-});
 
 
 function generateTable() {
@@ -107,7 +94,7 @@ function reverseCompareNum(a, b) {
   }
 }
 
-function compareDate(a, b){
+function compareDate(a, b) {
   if (a.dateOfBirth < b.dateOfBirth) {
     return -1;
 
@@ -131,7 +118,7 @@ function reverseCompareDate(a, b) {
   }
 }
 
-function compareDateOfEmployment(a, b){
+function compareDateOfEmployment(a, b) {
   if (a.dateOfEmployment < b.dateOfEmployment) {
     return -1;
 
@@ -155,7 +142,7 @@ function reverseCompareDateOfEmployment(a, b) {
   }
 }
 
-function compareEmail(a, b){
+function compareEmail(a, b) {
   if (a.email < b.email) {
     return -1;
 
@@ -195,15 +182,15 @@ function sortTable(sort, reverseSort) {
 
 }
 
-function deleteEmployee(element){
+function deleteEmployee(element) {
   let array = [];
   let keys = Object.keys(localStorage);
-  keys.forEach(key =>{
+  keys.forEach(key => {
     key.startsWith(`Project`) ? array.push(key) : null
   })
 
-  array.forEach(e =>{
-    if(JSON.parse(localStorage.getItem(e)).employeesAllocated.includes(`Employee ${element.value}`)){
+  array.forEach(e => {
+    if (JSON.parse(localStorage.getItem(e)).employeesAllocated.includes(`Employee ${element.value}`)) {
       let projectToHaveEmployeeDeleted = JSON.parse(localStorage.getItem(e));
       let index = projectToHaveEmployeeDeleted.employeesAllocated.indexOf(`Employee ${element.value}`);
       projectToHaveEmployeeDeleted.employeesAllocated.splice(index, 1);
@@ -217,9 +204,9 @@ function deleteEmployee(element){
 
 }
 
-function editEmployee(element){
+function editEmployee(element) {
   employeeToBeEdited = element.value;
-  localStorage.setItem('employeeToBeEdited',localStorage.getItem(`Employee ${employeeToBeEdited}`) )
+  localStorage.setItem('employeeToBeEdited', localStorage.getItem(`Employee ${employeeToBeEdited}`))
   window.location.href = 'addEmployee.html';
 
 }

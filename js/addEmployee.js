@@ -19,7 +19,7 @@ if (JSON.parse(localStorage.getItem('employeeToBeEdited'))) {
   })
   employeeName = JSON.parse(localStorage.getItem("employeeToBeEdited")).name
   employee = JSON.parse(localStorage.getItem(`Employee ${employeeName}`))
-  showPto()
+  showPto();
 
   const spans = document.querySelectorAll('.spans');
   spans.forEach(span => {
@@ -32,24 +32,8 @@ if (JSON.parse(localStorage.getItem('employeeToBeEdited'))) {
 
 } else {
   document.getElementById('ptoDiv').style.display = 'none'
-
   document.addEventListener('onload', defaultEmploymentDate());
 }
-
-
-let navToggle = document.querySelector(".nav__toggle");
-let navWrapper = document.querySelector(".nav__wrapper");
-navToggle.addEventListener("click", function () {
-  if (navWrapper.classList.contains("active")) {
-    this.setAttribute("aria-expanded", "false");
-    this.setAttribute("aria-label", "menu");
-    navWrapper.classList.remove("active");
-  } else {
-    navWrapper.classList.add("active");
-    this.setAttribute("aria-label", "close menu");
-    this.setAttribute("aria-expanded", "true");
-  }
-});
 
 function projects() {
   let projectsArr = [];
@@ -114,6 +98,7 @@ function matchAgeInputs2() {
     document.getElementById('dateOfBirthSpan').style.color = 'green';
   } else {
     document.getElementById('age').value = '';
+
   }
 }
 
@@ -124,6 +109,13 @@ function defaultEmploymentDate() {
     document.getElementById('dateOfEmploymentSpan').style.color = 'green';
   }
 
+}
+
+function checkAllInputs(){
+  document.querySelectorAll('input').forEach(input =>{
+    input.value !== undefined ? document.getElementById('button').disabled = false : document.getElementById('button').disabled = true
+  })
+  console.log(input.value)
 }
 
 function addNewEmployee() {
@@ -176,7 +168,7 @@ function addNewEmployee() {
   } else {
     let keys = Object.keys(localStorage);
     if (keys.includes(`Employee ${newEmployee.name}`)) {
-      alert("Cannot have two different projects with the same name")
+      alert("Cannot have two different employees with the same name")
     } else {
       connectEmployeesToProjects();
 
@@ -237,7 +229,6 @@ function setPto() {
         return false
       }
   }
-  console.log(checkSamePto(endPto))
 
   if (startPto > new Date(document.getElementById('dateOfEmployment').value).getTime() && startPto < endPto ) {
 
@@ -252,8 +243,6 @@ function setPto() {
     //write something to catch the error
     //if the selected pto already is in the range /  if the pto is less than employment date / if the pto is lees than 1 day
     //add the PTO days in employee table
-
-    console.log("error")
   }
 
   showPto();
@@ -282,3 +271,4 @@ function deletePto(i) {
   pto === undefined ? document.getElementById("ptoDays").innerHTML = `<h4>PTO days:0</h4>` : document.getElementById("ptoDays").innerHTML = `<h4>PTO days:${pto}</h4>`
 
 }
+

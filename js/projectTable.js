@@ -13,23 +13,9 @@ const tableHeadProjects = `<tr>
 </tr>
 <tr>`;
 
-let navToggle = document.querySelector(".nav__toggle");
-let navWrapper = document.querySelector(".nav__wrapper");
-navToggle.addEventListener("click", function () {
-  if (navWrapper.classList.contains("active")) {
-    this.setAttribute("aria-expanded", "false");
-    this.setAttribute("aria-label", "menu");
-    navWrapper.classList.remove("active");
-  } else {
-    navWrapper.classList.add("active");
-    this.setAttribute("aria-label", "close menu");
-    this.setAttribute("aria-expanded", "true");
-  }
-});
-
 
 function generateTable() {
-    projectsArr.forEach((element) => {
+  projectsArr.forEach((element) => {
     document.getElementById('table').innerHTML += `
     <tr><td>${element.name}</td>
     <td>${element.startDate}</td>
@@ -102,7 +88,7 @@ function reverseCompareStartDate(a, b) {
   }
 }
 
-function compareTimeSinceStart(a, b){
+function compareTimeSinceStart(a, b) {
   if (a.timeSinceStart < b.timeSinceStart) {
     return -1;
 
@@ -126,7 +112,7 @@ function reverseCompareTimeSinceStart(a, b) {
   }
 }
 
-function compareNecessaryEmployees(a, b){
+function compareNecessaryEmployees(a, b) {
   if (a.necessaryEmployees < b.necessaryEmployees) {
     return -1;
 
@@ -150,7 +136,7 @@ function reverseCompareNecessaryEmployees(a, b) {
   }
 }
 
-function compareEmployeesAllocated(a, b){
+function compareEmployeesAllocated(a, b) {
   if (a.employeesAllocated < b.employeesAllocated) {
     return -1;
 
@@ -190,16 +176,16 @@ function sortTable(sort, reverseSort) {
 
 }
 
-function deleteProject(element){
+function deleteProject(element) {
 
   let array = [];
   let keys = Object.keys(localStorage);
-  keys.forEach(key =>{
+  keys.forEach(key => {
     key.startsWith(`Employee`) ? array.push(key) : null
   })
 
-  array.forEach(e =>{
-    if(JSON.parse(localStorage.getItem(e)).project.includes(`Project ${element.value}`)){
+  array.forEach(e => {
+    if (JSON.parse(localStorage.getItem(e)).project.includes(`Project ${element.value}`)) {
       let employeeToHaveProjectDeleted = JSON.parse(localStorage.getItem(e));
       let index = employeeToHaveProjectDeleted.project.indexOf(`Project ${element.value}`);
       employeeToHaveProjectDeleted.project.splice(index, 1);
@@ -213,9 +199,9 @@ function deleteProject(element){
   location.reload();
 }
 
-function editProject(element){
+function editProject(element) {
   projectsToBeEdited = element.value;
-  localStorage.setItem('projectsToBeEdited',localStorage.getItem(`Project ${projectsToBeEdited}`) )
+  localStorage.setItem('projectsToBeEdited', localStorage.getItem(`Project ${projectsToBeEdited}`))
   window.location.href = 'addProjects.html';
 
 }

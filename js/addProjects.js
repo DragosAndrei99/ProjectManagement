@@ -1,6 +1,6 @@
 'use strict';
 const patternName = /^[a-z]+([0-9.,]+)*$/gi;
-const patternNumber = /^[0-9]*$/gi;
+const patternNumber = /^[1-9]+[0-9]*$/gi;
 
 employeesAllocated();
 if (JSON.parse(localStorage.getItem('projectsToBeEdited'))) {
@@ -21,20 +21,6 @@ if (JSON.parse(localStorage.getItem('projectsToBeEdited'))) {
 } else {
     document.addEventListener('onload', defaultStartDate());
 }
-
-let navToggle = document.querySelector(".nav__toggle");
-let navWrapper = document.querySelector(".nav__wrapper");
-navToggle.addEventListener("click", function () {
-    if (navWrapper.classList.contains("active")) {
-        this.setAttribute("aria-expanded", "false");
-        this.setAttribute("aria-label", "menu");
-        navWrapper.classList.remove("active");
-    } else {
-        navWrapper.classList.add("active");
-        this.setAttribute("aria-label", "close menu");
-        this.setAttribute("aria-expanded", "true");
-    }
-});
 
 function capitalizeString(string) {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
