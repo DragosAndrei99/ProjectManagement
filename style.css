@@ -207,25 +207,16 @@ input {
 /* ------------------------ */
 
 
-.ptoDiv {
-  border: 1px solid black;
-  background-color: #ccdeedbd;
-  text-align: center;
-}
-
 .ptoSpan {
   text-align: center;
 }
 
-
-.addDiv {
+.divs {
   border: 1px solid black;
   background-color: #ccdeedbd;
   text-align: center;
   padding: 1%;  
-}
-
-.divs {
+  margin: 1%;
   -webkit-box-shadow: 5px 5px 5px 3px #000000;
   box-shadow: 5px 5px 5px 3px #000000;
   border: 2px outset black;
@@ -275,7 +266,6 @@ input {
   background: rgba(252,252,252,1);
   -webkit-box-shadow: 2px 2px 6px 0 #33bdef ;
   box-shadow: 2px 2px 6px 0 #33bdef ;
-  text-shadow: 1px 1px 0 rgba(255,255,255,0.66) ;
 }
 
 /* -------------footer */
@@ -301,4 +291,30 @@ input {
   padding-right: 4%;
   font-size:smaller;
   color: grey;
+}
+/* -------- */
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  color: #ffffff;
+  content: 'Select a profile picture';
+  display: inline-block;
+  background: linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }

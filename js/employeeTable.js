@@ -27,7 +27,7 @@ function generateTable() {
     <td>${element.dateOfEmployment}</td>
     <td>${element.phoneNumber}<a href="tel:${element.phoneNumber}">☎</a></td>
     <td>${element.email}<a href="mailto:${element.email}">📧</a></td>
-    <td><button onclick="editEmployee(this)" class="editButtons myButton" value="${element.name}">Edit</button></td> 
+    <td><button onclick="editEmployee(this)" class="editButtons myButton" value="${element.name}">Edit/Profile</button></td> 
     <td><button class="myButton" onclick="deleteEmployee(this)" id="delete" value="${element.name}">Delete</button></td></tr>`
   });
 

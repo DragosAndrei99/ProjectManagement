@@ -14,16 +14,24 @@
     <header id="header" class="site-header">
     </header>
 
-    <div style="display: flex; align-items: center; justify-content: space-around  ;">
-        <div class="addDiv divs">
+
+    <div style="display: flex; justify-content: space-around;">
+        <div id="profilePicDiv" style="text-align: center;width: 30%; height: auto;" class="divs">
+            <img id="profilePic" width="40%" style="border-radius: 50%;"
+                src="images\blank-profile-picture-g72502a567_640.png" />
+            <h3>Upload profile pic:</h3>
+            <input class="custom-file-input" style="display:flex; width: 80%;" type="file" id="files">
+            <br>
+            <button class="myButton" href="#" id="deleteImgs">Delete Image</button>
+        </div>
+        <div class="divs">
             <h3 id="subtitle">Add New Employee:</h3>
             <table>
                 <form method="post" action="employeesTable.html">
                     <tr>
                         <td><label for="name">Name:</label></td>
                         <td><input onkeyup="checkInput(this, document.getElementById('nameSpan'), patternName)"
-                                placeholder="Only letters" autocomplete="off" type="text"
-                                name="name" id="name">
+                                placeholder="Only letters" autocomplete="off" type="text" name="name" id="name">
                             <span class="spans" id="nameSpan">*</span></td>
                     </tr>
                     <tr>
@@ -81,11 +89,11 @@
                     </tr>
             </table>
             <br>
-            <button class="myButton" id="button" type="submit" onclick="addNewEmployee()" disabled >Add</button>
+            <button class="myButton" id="button" type="submit" onclick="addNewEmployee()" disabled>Add</button>
             </form>
 
         </div>
-        <div id="ptoDiv" class="ptoDiv divs">
+        <div style="width: 30%;" id="ptoDiv" class=" divs">
             <h3>PTO days:</h3>
             <div class="ptoSpan">Start</div><input id="startPto" type="date" />
             <div class="ptoSpan">End</div><input id="endPto" type="date" />
@@ -103,7 +111,7 @@
     <footer id="footer"></footer>
 
 
-    </body>
+</body>
 <script>
     var show = true;
 

@@ -2,13 +2,15 @@
 const patternName = /^[a-z]+( [a-z]+)*$/gi;
 const patternProject = /^[a-z]+([0-9.,]+)*$/gi;
 const patternPhoneNumber = /^07\d{8}$/g;;
-const patternEmail = /^[a-z0-9]+@+[a-z]+.com|.ro*$/;
+const patternEmail = /^[a-z0-9]+@+[a-z]+.+([a-z]{2, })*$/;
 let employeeName, employee, stringifiedEmployee;
 
 projects();
 if (JSON.parse(localStorage.getItem('employeeToBeEdited'))) {
+  let base64Img = JSON.parse(localStorage.getItem('employeeToBeEdited')).profilePic;
   document.getElementById('subtitle').innerText = "Edit Employee:";
   document.getElementById('name').value = JSON.parse(localStorage.getItem('employeeToBeEdited')).name;
+  base64Img ? document.getElementById('profilePic').src = base64Img : document.getElementById('profilePic').src = 'images/blank-profile-picture-g72502a567_640.png'
   document.getElementById('age').value = JSON.parse(localStorage.getItem('employeeToBeEdited')).age;
   document.getElementById('dateOfBirth').value = JSON.parse(localStorage.getItem('employeeToBeEdited')).dateOfBirth;
   document.getElementById('dateOfEmployment').value = JSON.parse(localStorage.getItem('employeeToBeEdited')).dateOfEmployment;
@@ -27,6 +29,7 @@ if (JSON.parse(localStorage.getItem('employeeToBeEdited'))) {
     span.style.color = 'green';
   })
   document.getElementById('button').disabled = false;
+
 
 
 
@@ -110,7 +113,6 @@ function defaultEmploymentDate() {
   }
 
 }
-
 function checkAllInputs(){
   document.querySelectorAll('input').forEach(input =>{
     input.value !== undefined ? document.getElementById('button').disabled = false : document.getElementById('button').disabled = true
@@ -118,8 +120,63 @@ function checkAllInputs(){
   console.log(input.value)
 }
 
-function addNewEmployee() {
+//---------------------------- add profile pic------------------------------------------------------------------------------------------------
 
+let imagesObject = [];
+
+function handleFileSelect(evt) {
+    let files = evt.target.files; 
+
+    for (var i = 0, f; f = files[i]; i++) {
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+      let reader = new FileReader();
+      reader.onload = function(e) {
+          displayImgData(e.target.result)
+          addImage(e.target.result);
+      };
+      reader.readAsDataURL(f);
+    }
+}
+
+function loadFromLocalStorage(){
+  let images = JSON.parse(localStorage.getItem("images"))
+
+  if(images && images.length > 0){
+    imagesObject = images;
+    
+    displayNumberOfImgs();
+    images.forEach(displayImgData);
+  }
+}
+
+function addImage(imgData){
+  imagesObject.push(imgData);
+  displayNumberOfImgs();
+}
+
+function displayImgData(imgData){
+  document.getElementById('profilePic').src = imgData
+}
+
+function displayNumberOfImgs(){
+  if(!(imagesObject.length > 0)){
+    document.getElementById("profilePic").src = "images/blank-profile-picture-g72502a567_640.png";
+  }
+}
+function deleteImages(){
+  imagesObject = [];
+  displayNumberOfImgs()
+  
+}
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+document.getElementById('deleteImgs').addEventListener("click", deleteImages);
+
+//------------------------------------------------------------------add Employee------------------------------------------------------------------------------
+
+function addNewEmployee() {
   let projectsToBeAdded = [];
   let projectsToBeDeleted = [];
 
@@ -152,6 +209,7 @@ function addNewEmployee() {
   let newEmployee = {
 
     name: capitalizeString(document.getElementById('name').value),
+    profilePic: document.getElementById('profilePic').src,
     age: document.getElementById('age').value,
     project: projectsToBeAdded,
     dateOfBirth: document.getElementById('dateOfBirth').value,
@@ -181,6 +239,8 @@ function addNewEmployee() {
 }
 
 
+//----------------------------------------------------------------PTO---------------------------------------------------------------------
+
 
 function showPto() {
   let ptoDays = [];
@@ -208,41 +268,18 @@ function setPto() {
     end: endPto
   }
 
-  function checkSamePto(e) {
-    //make pto not able to be set in intervals that were already set
-    let isTrue = false;
-    let employeeName = JSON.parse(localStorage.getItem("employeeToBeEdited")).name
-    let employee = JSON.parse(localStorage.getItem(`Employee ${employeeName}`))
-    if (employee.pto && employee.pto.length > 0) {
-      employee.pto.forEach(element => {
-        console.log(element)
-        if (element.end < e && element.start < e || element.start > e && element.end > e)  {
-          isTrue = true
-          return isTrue
-        } 
-
-      }) 
-    } 
-      if (isTrue) {
-        return isTrue
-      } else {
-        return false
-      }
-  }
-
+  
   if (startPto > new Date(document.getElementById('dateOfEmployment').value).getTime() && startPto < endPto ) {
 
     employee.pto === undefined ? employee.pto = [pto] : employee.pto = [...employee.pto, pto];
     stringifiedEmployee = JSON.stringify(employee)
     localStorage.setItem(`Employee ${employeeName}`, stringifiedEmployee);
-
+    document.getElementById("startPto").style.border = 'none';
+    document.getElementById("endPto").style.border = 'none';
 
   } else {
-
-
-    //write something to catch the error
-    //if the selected pto already is in the range /  if the pto is less than employment date / if the pto is lees than 1 day
-    //add the PTO days in employee table
+    document.getElementById("startPto").style.border = '2px solid red';
+    document.getElementById("endPto").style.border = '2px solid red';
   }
 
   showPto();
@@ -271,4 +308,6 @@ function deletePto(i) {
   pto === undefined ? document.getElementById("ptoDays").innerHTML = `<h4>PTO days:0</h4>` : document.getElementById("ptoDays").innerHTML = `<h4>PTO days:${pto}</h4>`
 
 }
+
+
 

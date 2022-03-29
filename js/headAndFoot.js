@@ -5,8 +5,8 @@
 function generateHeader(){
     document.getElementById('header').innerHTML = `
     <div class="wrapper site-header__wrapper">
-      
-      <a style='margin-left: 20px' href="C:/Users/Dragos/Desktop/web-dev/ProjectManagement/index.html">
+    
+      <a style='margin-left: 20px' href="index.html">
       <img width='12%' src='images/pngwing.com.png'/></a>
       <nav class="nav">
         <div class="nav__toggle container" aria-expanded="false" >
@@ -15,13 +15,13 @@ function generateHeader(){
         <div class="bar3"></div>
         </div>
         <ul class="nav__wrapper">
-          <li class="nav__item"><a href="C:/Users/Dragos/Desktop/web-dev/ProjectManagement/employeesTable.html">View
+          <li class="nav__item"><a href="employeesTable.html">View
               Employees</a></li>
-          <li class="nav__item"><a href="C:/Users/Dragos/Desktop/web-dev/ProjectManagement/projectTable.html">View
+          <li class="nav__item"><a href="projectTable.html">View
               Projects</a></li>
-          <li class="nav__item"><a href="C:/Users/Dragos/Desktop/web-dev/ProjectManagement/addEmployee.html">Add New
+          <li class="nav__item"><a href="addEmployee.html">Add New
               Employee</a></li>
-          <li class="nav__item"><a href="C:/Users/Dragos/Desktop/web-dev/ProjectManagement/addProjects.html">Add New
+          <li class="nav__item"><a href="addProjects.html">Add New
               Project</a></li>
         </ul>
       </nav>
@@ -70,9 +70,6 @@ function generateFooter(){
     <a class='hyperlinks' target='_blank' href='https://www.facebook.com/vdragos1999'><img class="social-icons" src='images/5282541_fb_social media_facebook_facebook logo_social network_icon.png'/>Facebook</a>
     <a class='hyperlinks' target='_blank' href='https://api.whatsapp.com/send?phone=40721425291'><img class="social-icons" src='images/5282549_call_chat_mobile_whatsapp_whatsapp logo_icon.png'/>Whats App</a>`
 }
-
-
-
 
 generateHeader();
 generateFooter();
