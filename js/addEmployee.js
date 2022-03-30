@@ -17,7 +17,7 @@ if (JSON.parse(localStorage.getItem('employeeToBeEdited'))) {
   document.getElementById('phoneNumber').value = JSON.parse(localStorage.getItem('employeeToBeEdited')).phoneNumber;
   document.getElementById('email').value = JSON.parse(localStorage.getItem('employeeToBeEdited')).email;
   JSON.parse(localStorage.getItem('employeeToBeEdited')).project.forEach(project => {
-    project === document.getElementById(project).id ? document.getElementById(project).checked = true : document.getElementById(project).checked = false
+  project === document.getElementById(project).id ? document.getElementById(project).checked = true : document.getElementById(project).checked = false
   })
   employeeName = JSON.parse(localStorage.getItem("employeeToBeEdited")).name
   employee = JSON.parse(localStorage.getItem(`Employee ${employeeName}`))

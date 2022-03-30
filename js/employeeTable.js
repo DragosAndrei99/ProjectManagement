@@ -22,7 +22,7 @@ function generateTable() {
     document.getElementById('table').innerHTML += `
     <tr><td>${element.name}</td>
     <td>${element.age}</td>
-    <td>${element.project}</td>
+    <td>${element.project.length === 0 ? element.project = 'no project allocated' : element.project }</td>
     <td>${element.dateOfBirth}</td>
     <td>${element.dateOfEmployment}</td>
     <td>${element.phoneNumber}<a href="tel:${element.phoneNumber}">☎</a></td>
@@ -213,5 +213,3 @@ function editEmployee(element) {
 
 showTable();
 
-//make a separate employee profile-like page with PTOs
-//make a project page where you can see details , employees etc

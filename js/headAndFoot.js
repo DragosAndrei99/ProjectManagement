@@ -47,11 +47,13 @@ function generateHeader(){
         this.setAttribute("aria-label", "menu");
         this.classList.toggle("change");
         navWrapper.classList.remove("active");
+        document.getElementById('mainDiv').classList.remove('blur');
         } else {
         this.classList.toggle("change");
         navWrapper.classList.add("active");
         this.setAttribute("aria-label", "close menu");
         this.setAttribute("aria-expanded", "true");
+        document.getElementById('mainDiv').classList.add('blur');
     }
   });
   const result = await wait1Sec();
@@ -66,9 +68,9 @@ function generateHeader(){
 function generateFooter(){
     document.getElementById('footer').innerHTML = `
     <div class='footerDiv'>Copyright 2022</div>
-    <a class='hyperlinks' target='_blank' href='https://www.linkedin.com/in/vasile-dragos-7b83b3225/'><img class="social-icons" src='images/5282542_linkedin_network_social network_linkedin logo_icon.png'/>Linked-in</a>
-    <a class='hyperlinks' target='_blank' href='https://www.facebook.com/vdragos1999'><img class="social-icons" src='images/5282541_fb_social media_facebook_facebook logo_social network_icon.png'/>Facebook</a>
-    <a class='hyperlinks' target='_blank' href='https://api.whatsapp.com/send?phone=40721425291'><img class="social-icons" src='images/5282549_call_chat_mobile_whatsapp_whatsapp logo_icon.png'/>Whats App</a>`
+    <a class='hyperlinks' target='_blank' href='https://www.linkedin.com/in/vasile-dragos-7b83b3225/'><img class="socialIcons" src='images/5282542_linkedin_network_social network_linkedin logo_icon.png'/>Linked-in</a>
+    <a class='hyperlinks' target='_blank' href='https://www.facebook.com/vdragos1999'><img class="socialIcons" src='images/5282541_fb_social media_facebook_facebook logo_social network_icon.png'/>Facebook</a>
+    <a class='hyperlinks' target='_blank' href='https://api.whatsapp.com/send?phone=40721425291'><img class="socialIcons" src='images/5282549_call_chat_mobile_whatsapp_whatsapp logo_icon.png'/>Whats App</a>`
 }
 
 generateHeader();
