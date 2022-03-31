@@ -15,6 +15,7 @@ function generateHeader(){
         <div class="bar3"></div>
         </div>
         <ul class="nav__wrapper">
+          <li class="nav__item"><a href="toDoList.html">To-Do List</a></li>
           <li class="nav__item"><a href="employeesTable.html">View
               Employees</a></li>
           <li class="nav__item"><a href="projectTable.html">View

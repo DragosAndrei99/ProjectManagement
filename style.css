@@ -21,6 +21,42 @@ body {
 } 
 
 
+/* ------------------------------------------------index animation---------------------------------------------------------------------------- */
+
+.sticker {
+  background: url('images/pngwing.com.png') ; 
+  background-size:200px;
+  width:200px;
+  height:200px; 
+  position:absolute;
+  left: 45%;
+  top:35%;
+  animation: spin 10s linear infinite;
+  animation-play-state: running; 
+}
+
+.sticker:hover {
+  animation-play-state: paused;
+}
+
+
+@keyframes spin {
+  100% {transform: rotate(1turn); }
+}
+
+@media (max-width:500px){
+  .sticker{
+  left: 38%;
+  top:35%;
+  background-size:100px;
+  width:100px;
+  height:100px; 
+  }
+}
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
 table{
   width: 100%;
 }
@@ -32,7 +68,9 @@ td {
 
 }
 
-  /* -----------NAVBAR STYLING ------------- */
+  /* -----------NAVBAR STYLING ----------------------------------------------------------------------------------------------------- */
+
+  
   .site-header {
     position: relative;
     background-color: #add8e6;
@@ -46,7 +84,7 @@ td {
     padding-bottom: 1rem;
   }
   
-  @media (min-width: 600px) {
+  @media (min-width: 650px) {
     .site-header__wrapper {
       display: flex;
       justify-content: space-between;
@@ -56,13 +94,13 @@ td {
     }
   }
   
-  @media (min-width: 600px) {
+  @media (min-width: 650px) {
     .nav__wrapper {
       display: flex;
     }
   }
   
-  @media (max-width: 599px) {
+  @media (max-width: 649px) {
     .nav__wrapper {
       position: absolute;
       top: 100%;
@@ -124,7 +162,7 @@ td {
     transform: rotate(45deg) translate(-8px, -8px);
   }
   
-  @media (max-width: 599px) {
+  @media (max-width: 649px) {
     .nav__toggle {
       display: block;
       position: absolute;
@@ -138,19 +176,20 @@ td {
     list-style-type: none;
   }
 
-/* ------------------------ */
+/* --------------------------------------------------------------------------------------------------------------------------- */
 
 
 input {
   margin: 5px;
   width: auto;
+  font-size:2.3vh;
 }
 
 .spans {
   color: red;
 }
 
-/* ------------------------ */
+/* --------------------------------------------------------------------------------------------------------------------------- */
 
 .blur{
   filter: blur(2px);
@@ -158,7 +197,7 @@ input {
 }
 
 
-/* -----------DROPDOWN MENU STYLING------------- */
+/* -----------DROPDOWN MENU STYLING------------------------------------------------------------------------------- */
 
 
 .multipleSelection {
@@ -212,11 +251,12 @@ input {
   width: auto;
 }
 
-/* ------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------- */
 
 .mainDiv{
   display: flex;
   justify-content: space-around;
+  margin-bottom: 10%;
 }
 
 #profilePicDiv{
@@ -259,7 +299,7 @@ input {
     width: 90%;
   }
   footer{
-    font-size: 2vh;
+    font-size: 1.5vh;
   }
 
   #ptoDiv{
@@ -267,11 +307,27 @@ input {
     width: 90%;
   }
 
+  input{
+    font-size:2vh;
+  }
  
 }
 
+@media (max-width:500px){
+  input{
+    font-size:1.5vh;
+  }
+}
 
-/* ------------------------------------------------- */
+@media (min-width: 2000px){
+
+  input{
+    font-size: 1.5vh;
+  }
+}
+
+
+/* --------------------------------------------------------------------------------------------- */
 
 
 
@@ -326,8 +382,11 @@ input {
   }
 }
 
-/* -------------footer */
+/* -------------footer----------------------------------------------------------------------------- */
 #footer{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   margin-top:auto;
   background-color:#add8e6 ;
   text-align: center;
@@ -336,7 +395,6 @@ input {
 
 .footerDiv{
   padding: 0.5% 0.5%;
-  font-size:smaller;
   color: grey;
 }
 
@@ -352,7 +410,7 @@ input {
 
 
 }
-/* ------------------------------------------file input--------------------------------------------------------------------- */
+/* ------------------------------------------file input----------------------------------------------------------------------------------- */
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 }

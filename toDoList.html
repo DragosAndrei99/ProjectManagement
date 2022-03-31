@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="toDoListStyles.css">
+  <title>Project Management</title>
+</head>
+
+<body>
+  
+  <header id="header" class="site-header">
+  </header>
+
+  <div class="overlayHidden" id="loading">
+    <div class="overlayWrapper">
+        <div class="spinner"></div>
+    </div>
+</div>
+
+    <div id="mainDiv">
+        
+        <div class="tasks">
+            <h1>To-Do List</h1>
+            <div id="tasks">
+            
+            </div>  
+            <div class="divs">
+            <span style="font-weight:bold">Enter note here:</span>
+            <input style="width:70%" id="notesInput" type="text" maxlength="30" placeholder="max 30 characters long"/>
+            <button class="myButton" onclick="addNote()">Add</button>
+        </div>
+    </div>
+    </div>  
+
+    
+  
+
+  
+  <footer id="footer"></footer>
+  <script src="js\headAndFoot.js"></script>
+  <script src="js\index.js"></script>
+  <script src="js\toDoList.js"></script>
+</body>
+
+</html>
