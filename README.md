@@ -7,6 +7,6 @@ Features:
 -Responsive web design
 
 
-This was written using only HTML, CSS and JavaScript without any other frameworks.
+This was made using only HTML, CSS and JavaScript without any other frameworks.
 **It was only tested on Google Chrome and Microsoft Edge (latest versions)
 **For Mozzila Firefox, it does not saves the data in localStorage
